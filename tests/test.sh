@@ -5,6 +5,15 @@ set -o pipefail
 
 SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-for f in "$SCRIPT_PATH/../*.sh"; do
-    bash f
+cd $SCRIPT_PATH/..
+
+SCRIPTS=$(ls *.sh)
+
+for f in $SCRIPTS; do
+    bash $f 2>&1 >/dev/null
+    if [ $? -eq 0 ]; then
+        echo "[OK] $f"
+    else
+        echo "[FAIL] $f"
+    fi    
 done
