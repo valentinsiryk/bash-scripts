@@ -2,11 +2,10 @@
 
 language: bash
 
-#matrix:
-#  include:
-dist:
-  - trusty
-  - xenial
+matrix:
+  include:
+    - dist: trusty
+    - dist: xenial
 
 sudo: enabled
 
