@@ -7,9 +7,6 @@ matrix:
     - dist: trusty
     - dist: xenial
     - dist: bionic
-    - env:
-        - PACKER_VERSION='1.2.1'
-        - PACKER_VERSION=''
 
 sudo: enabled
 
@@ -18,4 +15,5 @@ branches:
     - master
 
 script:
-    - sudo bash install-packer.sh $PACKER_VERSION
+    - sudo bash install-packer.sh 1.2.0
+    - sudo bash install-packer.sh
