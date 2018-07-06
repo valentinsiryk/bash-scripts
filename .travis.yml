@@ -1,19 +1,16 @@
 ---
 
-#language: bash
-
 matrix:
   include:
     - dist: trusty
-      language: bash
     - dist: xenial
-      language: bash
-
-sudo: enabled
 
 branches:
   only:
     - master
+
+language: bash
+sudo: enabled
 
 script:
     - sudo bash install-packer.sh 1.2.0
