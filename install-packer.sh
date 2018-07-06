@@ -75,4 +75,3 @@ if which packer >/dev/null; then
 fi
 
 install_packer
-
