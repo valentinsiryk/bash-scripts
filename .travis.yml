@@ -19,4 +19,4 @@ branches:
     - master
 
 script:
-    - bash install-packer.sh $PACKER_VERSION
+    - sudo install-packer.sh $PACKER_VERSION
