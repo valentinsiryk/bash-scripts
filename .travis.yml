@@ -1,0 +1,22 @@
+---
+
+env:
+  - PACKER_VERSION='1.2.1'
+  - PACKER_VERSION=''
+
+language: bash
+
+matrix:
+  include:
+    - dist: trusty
+    - dist: xenial
+    - dist: bionic
+
+sudo: enabled
+
+branches:
+  only:
+    - master
+
+script:
+    - bash install-packer.sh $PACKER_VERSION

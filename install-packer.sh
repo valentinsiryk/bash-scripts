@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Arguments:
-#   [packer_version]    - if not set use latest
+#   [packer_version]    - will be used latest if not set
 
 SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
