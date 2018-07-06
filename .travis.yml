@@ -1,11 +1,13 @@
 ---
 
-language: bash
+#language: bash
 
 matrix:
   include:
     - dist: trusty
+      language: bash
     - dist: xenial
+      language: bash
 
 sudo: enabled
 
