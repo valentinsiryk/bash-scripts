@@ -8,7 +8,6 @@ language: bash
 
 matrix:
   include:
-    - dist: trusty
     - dist: xenial
     - dist: bionic
 
