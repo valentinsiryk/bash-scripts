@@ -13,4 +13,4 @@ language: bash
 sudo: enabled
 
 script:
-  - sudo ./tests/test.sh
+  - sudo bash ./tests/test.sh
