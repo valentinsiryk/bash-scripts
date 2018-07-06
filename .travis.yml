@@ -5,15 +5,9 @@ language: bash
 matrix:
   include:
     - dist: trusty
-      env:
-        - PACKER_VERSION='1.2.1'
-        - PACKER_VERSION=''
     - dist: xenial
-      env:
-        - PACKER_VERSION='1.2.1'
-        - PACKER_VERSION=''
     - dist: bionic
-      env:
+    - env:
         - PACKER_VERSION='1.2.1'
         - PACKER_VERSION=''
 
