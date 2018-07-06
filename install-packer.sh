@@ -45,6 +45,7 @@ if [ -n "$CURRENT_PACKER_BIN_PATH" ]; then
     PACKER_BIN_PATH=$CURRENT_PACKER_BIN_PATH
 fi
 
+apt-get update >/dev/null
 
 if [ -z "$PACKER_VERSION" ]; then
     if ! which jq 2>&1 >/dev/null; then
