@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $UID -ne 0 ]; then
+    echo "Expected run this script as root user!"
+    exit 1
+fi
+
 apt-get update
 apt-get install -y --no-install-recommends \
     apt-transport-https \
