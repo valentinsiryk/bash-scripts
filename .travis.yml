@@ -13,5 +13,4 @@ language: bash
 sudo: enabled
 
 script:
-    - sudo bash install-packer.sh 1.2.0
-    - sudo bash install-packer.sh
+  - sudo ./tests/test.sh
