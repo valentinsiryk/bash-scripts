@@ -16,7 +16,7 @@ for f in $SCRIPTS; do
             ;;   
     esac
 
-    bash $f 2>&1 >/dev/null
+    bash $f
     if [ $? -eq 0 ]; then
         echo "[OK] $f"
     else
