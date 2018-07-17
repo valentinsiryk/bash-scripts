@@ -13,7 +13,7 @@ for f in $SCRIPTS; do
     case $f in
         'docker-deploy.sh')
             echo 'FROM nginx' > $SCRIPT_PATH/../Dockerfile
-            PORT=80 bash $f nginx
+            PORT_INTERNAL=80 bash $f nginx
             ;;
         *)
             bash $f
