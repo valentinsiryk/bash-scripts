@@ -2,8 +2,10 @@
 
 # Args: <container_name>
 
+# docker -p <LISTEN_INTERFACE>:<PORT_EXTERNAL>:<PORT_INTERNAL>
 LISTEN_INTERFACE="${LISTEN_INTERFACE:-127.0.0.1}"
-PORT="${PORT:-8080}"
+PORT_INTERNAL="${PORT_INTERNAL:-8080}"
+PORT_EXTERNAL="${PORT_EXTERNAL:-8080}"
 
 SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -17,7 +19,7 @@ if [ ! -e $SCRIPT_PATH/Dockerfile ]; then
     exit 1
 fi
 
-let "PORT_TEST = $PORT + 10000"
+let "PORT_TEST = $PORT_EXTERNAL + 10000"
 
 CONTAINER_NAME="$1"
 CONTAINER_NAME_TEST="${CONTAINER_NAME}.test"
@@ -63,7 +65,7 @@ install_docker() {
 test_build() {
 	docker build -f $SCRIPT_PATH/Dockerfile -t "$IMAGE_NAME_TEST" $SCRIPT_PATH/
 
-	docker run -d --name "$CONTAINER_NAME_TEST" -p 127.0.0.1:$PORT_TEST:$PORT $IMAGE_NAME_TEST
+	docker run -d --name "$CONTAINER_NAME_TEST" -p 127.0.0.1:$PORT_TEST:$PORT_INTERNAL $IMAGE_NAME_TEST
 
     echo "[INFO] Waiting until test container response..."
     MAX_TRIES=12
@@ -104,5 +106,5 @@ docker rmi "$IMAGE_NAME" >/dev/null 2>&1
 docker tag "$IMAGE_NAME_TEST" "$IMAGE_NAME"
 
 echo "[INFO] Running new '$CONTAINER_NAME' container..."
-docker run --restart always -d --name $CONTAINER_NAME -p $LISTEN_INTERFACE:$PORT:$PORT $IMAGE_NAME >/dev/null
+docker run --restart unless-stopped -d --name $CONTAINER_NAME -p $LISTEN_INTERFACE:$PORT_EXTERNAL:$PORT_INTERNAL $IMAGE_NAME >/dev/null
 
