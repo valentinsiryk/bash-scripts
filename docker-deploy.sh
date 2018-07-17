@@ -75,6 +75,7 @@ test_build() {
         
         if [ $TRY -ge $MAX_TRIES ]; then
             echo '[ERROR] Test container has not responsed'
+            docker logs $CONTAINER_NAME_TEST
             return 1 
         fi
         
