@@ -10,7 +10,7 @@ cd $SCRIPT_PATH/..
 SCRIPTS=$(ls *.sh)
 
 for f in $SCRIPTS; do
-    case in $f
+    case $f in
         'docker-deploy.sh')
             echo 'FROM nginx' > $SCRIPT_PATH/Dockerfile
             ;;   
