@@ -13,7 +13,9 @@ for f in $SCRIPTS; do
     case $f in
         'docker-deploy.sh')
             echo 'FROM nginx' > $SCRIPT_PATH/Dockerfile
-            ;;   
+            ;;
+        *)
+            ;;  
     esac
 
     bash $f
