@@ -12,13 +12,14 @@ SCRIPTS=$(ls *.sh)
 for f in $SCRIPTS; do
     case $f in
         'docker-deploy.sh')
-            echo 'FROM nginx' > $SCRIPT_PATH/Dockerfile
+            echo 'FROM nginx' > $SCRIPT_PATH/../Dockerfile
+            PORT=80 bash $f nginx
             ;;
         *)
+            bash $f
             ;;  
     esac
 
-    bash $f
     if [ $? -eq 0 ]; then
         echo "[OK] $f"
     else
