@@ -10,11 +10,13 @@ cd $SCRIPT_PATH/..
 SCRIPTS=$(ls *.sh)
 
 for f in $SCRIPTS; do
-    echo "[TEST] Testing script: $f"
+    echo -e "\n[TEST] Testing script: $f"
     case $f in
         'docker-deploy.sh')
             echo 'FROM nginx:stable' > $SCRIPT_PATH/../Dockerfile
             PORT_INTERNAL=80 bash $f nginx
+            docker rm -f nginx
+            rm $SCRIPT_PATH/../Dockerfile
             ;;
         *)
             bash $f
