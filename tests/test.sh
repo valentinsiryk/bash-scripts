@@ -10,10 +10,10 @@ cd $SCRIPT_PATH/..
 SCRIPTS=$(ls *.sh)
 
 for f in $SCRIPTS; do
-    echo "Testing script: $f"
+    echo "[TEST] Testing script: $f"
     case $f in
         'docker-deploy.sh')
-            echo 'FROM nginx' > $SCRIPT_PATH/../Dockerfile
+            echo 'FROM nginx:stable' > $SCRIPT_PATH/../Dockerfile
             PORT_INTERNAL=80 bash $f nginx
             ;;
         *)
@@ -22,8 +22,8 @@ for f in $SCRIPTS; do
     esac
 
     if [ $? -eq 0 ]; then
-        echo "[OK] $f"
+        echo "[OK] Tested script: $f"
     else
-        echo "[FAIL] $f"
-    fi    
+        echo "[FAIL] Tested script: $f"
+    fi
 done
