@@ -11,7 +11,7 @@ fi
 NODE_VERSION="$1"
 
 if [ -z "$NODE_VERSION" ]; then
-    NODE_VERSION='8'
+    NODE_VERSION='12'
 fi
 
 if ! which curl 2>&1 >/dev/null; then
