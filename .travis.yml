@@ -5,8 +5,9 @@
 
 matrix:
   include:
-    - dist: trusty
     - dist: xenial
+    - dist: bionic
+    - dist: focal
 
 branches:
   only:
