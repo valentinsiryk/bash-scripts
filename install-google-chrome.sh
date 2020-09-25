@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 if [ $UID -ne 0 ]; then
     echo "Expected run this script as root user!"

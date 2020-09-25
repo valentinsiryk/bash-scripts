@@ -29,6 +29,10 @@ function check_current_app_bin_path() {
 }
 
 function get_latest_version_number() {  
+    if ! which jq >/dev/null; then
+        apt-get update
+        apt-get install -y jq
+    fi
     APP_VERSION=$(curl https://releases.hashicorp.com/index.json 2>/dev/null | jq "{$APP_NAME}" \
                     | egrep "${OS}.*amd64" | grep -v "\-alpha\|\-rc\|\-beta" \
                     | sort --version-sort -r | head -1 | awk -F[_] '{print $2}')
